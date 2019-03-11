@@ -1,7 +1,11 @@
 import React, {Component} from 'react'
 import ReactDOM from 'react-dom'
- import './index.css'
-import App from './App'
+import './index.css'
+import ErrorBoundary from './components/ErrorBoundary'
+import App from './components/App'
 
 
-ReactDOM.render(<App />, document.getElementById('app'))
+ReactDOM.render(
+  <ErrorBoundary>
+    <App />
+  </ErrorBoundary>, document.getElementById('app'))
