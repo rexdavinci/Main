@@ -1,23 +1,30 @@
 import React, { Component } from 'react'
 
 export default class ErrorBoundary extends Component {
-    state = {
-      hasError: false,
-      info: '',
-      error: ''
-    }
-
-  componentDidCatch = (error, info) => {
+  state = {
+    error: null,
+    errorInfo: null
+  }
+  componentDidCatch = (error, errorInfo) => {
     this.setState({
-      hasError: true,
-      info: info,
-      error: error
+      error,
+      errorInfo
     })
+    // You can log error to the error reporting service here
   }
   render() {
-    if(this.state.hasError){
-      return <div><h1>Caught by Error Boundary</h1></div>
+    if (this.state.errorInfo) {
+      // Error path
+      return (
+        <div>
+          <h2>Failed to render</h2>
+          <p>{this.state.error && this.state.error.toString()}</p>
+          <p>Error Details:</p>
+            <p>{this.state.errorInfo.componentStack}</p>
+        </div>
+      );
     }
-    return this.props.children
+    // Normally, just render children
+    return this.props.children;
   }
 }
