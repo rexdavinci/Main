@@ -1,19 +1,16 @@
-const path = require ('path')
 const HtmlWebpackPlugin = require ('html-webpack-plugin')
 const MiniCssExtractPlugin = require("mini-css-extract-plugin")
 
 module.exports = {
-  entry: './src/index.js',
-  output: {
-    path: path.resolve(__dirname, 'dist'),
-    filename: 'index_bundle.js'
-  },
+
   module: {
     rules: [
       {
-        test: /\.(js)$/,
+        test: /\.(js|jsx)$/,
         exclude: /node_modules/,
-        use: 'babel-loader'
+        use: {
+          loader: 'babel-loader'
+        }
       },
       {
         // Handle Css and Sass files
