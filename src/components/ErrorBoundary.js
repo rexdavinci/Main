@@ -17,8 +17,11 @@ export default class ErrorBoundary extends Component {
       // Some error was thrown. Let's display something helpful to the user
       return (
         <div>
-          <h5>Sorry. More than five characters!</h5>
+          <h3>Something went wrong!</h3>
+          <br />
           <details style={{ whiteSpace: 'pre-wrap' }}>
+          {this.state.error && this.state.error.toString()}
+          <br />
             {this.state.info.componentStack}
           </details>
         </div>

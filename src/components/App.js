@@ -4,9 +4,7 @@ import '../../resources/sass/App.scss'
 export default class App extends Component {
   render() {
     return (
-      <div>
-        <Navbar />
-      </div>
+      <Navbar />
     )
   }
 }
