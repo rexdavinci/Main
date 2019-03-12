@@ -3,28 +3,28 @@ import React, { Component } from 'react'
 export default class ErrorBoundary extends Component {
   state = {
     error: null,
-    errorInfo: null
+    info: null
   }
-  componentDidCatch = (error, errorInfo) => {
+  componentDidCatch = (error, info) => {
     this.setState({
-      error,
-      errorInfo
+      error:error,
+      info:info
     })
     // You can log error to the error reporting service here
   }
   render() {
-    if (this.state.errorInfo) {
-      // Error path
+    if(this.state.error) {
+      // Some error was thrown. Let's display something helpful to the user
       return (
         <div>
-          <h2>Failed to render</h2>
-          <p>{this.state.error && this.state.error.toString()}</p>
-          <p>Error Details:</p>
-            <p>{this.state.errorInfo.componentStack}</p>
+          <h5>Sorry. More than five characters!</h5>
+          <details style={{ whiteSpace: 'pre-wrap' }}>
+            {this.state.info.componentStack}
+          </details>
         </div>
       );
     }
-    // Normally, just render children
+    // No errors were thrown. As you were.
     return this.props.children;
   }
 }
