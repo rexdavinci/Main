@@ -1,0 +1,3 @@
+npm i file-loader react react-dom
+
+npm i -D @babel/core @babel/plugin-proposal-class-properties @babel/preset-react babel-loader css-loader html-webpack-plugin mini-css-extract-plugin node-sass sass-loader style-loader url-loader webpack webpack-cli webpack-dev-server
