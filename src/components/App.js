@@ -3,21 +3,26 @@ import PropTypes from 'prop-types'
 import '../../resources/sass/App.scss'
 
 
-const Person = ({img,name,age}) => {
+const Person = ({img,name,age, info}) => {
   return(
     <div>
       <img src={img} alt="person"/>
       <h2>name: {name}</h2>
       <h2>age: {age}</h2>
+      <h5>info: {info}</h5>
     </div>
   )
 }
 
 Person.propTypes = {
-  img: PropTypes.string,
-  age: PropTypes.string,
-  age: PropTypes.number,
-  name: PropTypes.string
+  img: PropTypes.string.isRequired,
+  age: PropTypes.string.isRequired,
+  age: PropTypes.number.isRequired,
+  name: PropTypes.string.isRequired,
+  info: PropTypes.string.isRequired
+}
+Person.defaultProps = {
+  info: "No info available"
 }
 class PersonList extends Component{
   state={
@@ -26,15 +31,14 @@ class PersonList extends Component{
         id: 1,
         img: "https://randomuser.me/api/portraits/thumb/men/24.jpg",
         name: "John",
-        age: "Brown"
-
+        age: 31,
+        info: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam, architecto?"
       },
       {
         id: 2,
         img: "https://randomuser.me/api/portraits/thumb/men/32.jpg",
-        name: 14,
+        name: "Bob",
         age: 32
-
       }
     ]
   }
@@ -43,7 +47,7 @@ class PersonList extends Component{
       <div>
         {this.state.people.map(person=> {
           return(
-            <Person key={person.id} name={person.name} img={person.img} age={person.age}/>
+            <Person key={person.id} name={person.name} img={person.img} age={person.age} info={person.info}/>
           )
         })}
       </div>
